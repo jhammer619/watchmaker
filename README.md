@@ -1,26 +1,19 @@
 # Watchmaker
 
-Watch a file and when it changes automatically call `make` in its directory.
+This tool will watch a file and, when it detects that the file has changed, it
+will automatically run `make` in the file's directory.
 
 ### Usage
 ```
-watchmaker CV.tex
+watchmaker cv.tex
 ```
 
 ### Build
-```
-go build
-```
-or
 ```
 make
 ```
 
 ### Install
-```
-GOBIN=/usr/local/bin go install
-```
-or
 ```
 make install
 ```
