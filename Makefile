@@ -1,5 +1,5 @@
 default: all
-all: main.go watcher
+all: main.go
 	go build
 install:
 	GOBIN=/usr/local/bin go install

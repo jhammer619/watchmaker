@@ -8,7 +8,7 @@ import (
 	"os/exec"
 	"path/filepath"
 
-	"./watcher"
+    "github.com/gohugoio/hugo/watcher"
 )
 
 // newWatcher creates a new watcher to watch filesystem events.
