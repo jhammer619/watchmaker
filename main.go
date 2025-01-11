@@ -1,14 +1,14 @@
 package main
 
 import (
-    "fmt"
-	"time"
 	"bufio"
+	"fmt"
 	"os"
 	"os/exec"
 	"path/filepath"
+	"time"
 
-    "github.com/gohugoio/hugo/watcher"
+	"github.com/gohugoio/hugo/watcher"
 )
 
 // newWatcher creates a new watcher to watch filesystem events.
@@ -29,20 +29,20 @@ func newWatcher(watched string) (*watcher.Batcher, error) {
 			select {
 			case evs := <-watcher.Events:
 				fmt.Println(evs)
-					cmd := exec.Command("make")
-					cmd.Dir = filepath.Dir(watched)
-					stdout, _ := cmd.StdoutPipe()
+				cmd := exec.Command("make")
+				cmd.Dir = filepath.Dir(watched)
+				stdout, _ := cmd.StdoutPipe()
 
-				    cmd.Start()
+				cmd.Start()
 
-					scanner := bufio.NewScanner(stdout)
+				scanner := bufio.NewScanner(stdout)
 
-					for scanner.Scan() {
-						m := scanner.Text()
-						fmt.Println(m)
-					}
+				for scanner.Scan() {
+					m := scanner.Text()
+					fmt.Println(m)
+				}
 
-					cmd.Wait()
+				cmd.Wait()
 			case err := <-watcher.Errors:
 				if err != nil {
 					fmt.Println(err)
@@ -56,10 +56,10 @@ func newWatcher(watched string) (*watcher.Batcher, error) {
 
 func usage(progname string) {
 	fmt.Printf(
-		"\n%s: watch a file and when it changes automatically call `make` " +
-		"in its directory\n\n" +
-		"usage:\n" +
-		"	%s path/to/file\n\n",
+		"\n%s: watch a file and when it changes automatically call `make` "+
+			"in its directory\n\n"+
+			"usage:\n"+
+			"	%s path/to/file\n\n",
 		progname, progname)
 }
 
